@@ -17,15 +17,26 @@
 		<![endif]-->
 	</head>
 	<body>
-	    <div class="row">
-	    	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	    		<h1>Bienvenido a <%= title %>!!</h1>
-	    		<p>Portal donde podrás crear tus juegos de preguntas y respuestas.</p>
-	    		<a class="btn btn-default" href="/quizes/question" role="button">Comience a Jugar</a>
-	    	</div>
-	    </div>
- 
- 		<!-- jQuery -->
+		<h1 class="text-center">Quiz: el juego de las preguntas</h1>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<form action="/quizes/answer" method="get" role="form">
+					<legend>Pregunta</legend>
+				
+					<div class="form-group">
+						<label for=""><%= pregunta %></label>
+						<input type="text" name="respuesta" class="form-control" id="" placeholder="Responda aquí">
+					</div>
+				
+					
+				
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
