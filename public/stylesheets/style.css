@@ -24,7 +24,6 @@ body {
 
 .footer .container {
   width: auto;
-  max-width: 680px;
   padding: 0 15px;
 }
 .footer .container .text-muted {
