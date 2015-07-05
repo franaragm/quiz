@@ -15,10 +15,29 @@ exports.load = function(req, res, next, quizId){
 };
 
 // GET /quizes
-exports.index = function(req, res){
-	models.Quiz.findAll().then(function(quizes) {
-		res.render('quizes/index', {quizes: quizes});
-	});
+exports.index = function(req, res, next){
+ 
+     // definimos un objeto vacio en caso de que el usuario no haga
+     // una busqueda y queramos mostrar todos los resultados
+     var query = {};
+ 
+     // si el usuario realiza una busqueda, componemos el query
+     if(req.query.search)
+    {
+        var search = req.query.search;
+        search = search.split(" ").join('%');
+        search = '%' + search + '%';
+
+        query = {
+        	where: ["lower(pregunta) like ?", search]
+        };
+    }
+
+    models.Quiz.findAll(query).then(function(quizes){
+        res.render('quizes/index', {quizes: quizes});
+    }).catch(function(error){
+        next(error);
+    });
 };
 
 // GET /quizes/:id
