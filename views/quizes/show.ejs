@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			<form action="/quizes/answer" method="get" role="form">
+			<form action="/quizes/<%= quiz.id %>/answer" method="get" role="form">
 					<legend>Pregunta</legend>
 				
 					<div class="form-group">
-						<label for=""><%= pregunta %></label>
+						<label for=""><%= quiz.pregunta %></label>
 						<input type="text" name="respuesta" class="form-control" id="" placeholder="Responda aquí">
 					</div>
 				

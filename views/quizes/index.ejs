@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Lista de Preguntas</h2>
+			<ul class="list-group">
+				<% var i; for (i=0; i < quizes.length; i++) { %>
+					<a href="quizes/<%= quizes[i].id %>" class="list-group-item"><%= quizes[i].pregunta %></a>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>
