@@ -24,7 +24,7 @@ exports.index = function(req, res, next){
      // si el usuario realiza una busqueda, componemos el query
      if(req.query.search)
     {
-        var search = req.query.search;
+        var search = req.query.search.toLowerCase();
         search = search.split(" ").join('%');
         search = '%' + search + '%';
 
