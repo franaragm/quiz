@@ -18,9 +18,16 @@
 			<h2>Lista de Preguntas</h2>
 			<ul class="list-group">
 				<% var i; for (i=0; i < quizes.length; i++) { %>
-					<a href="quizes/<%= quizes[i].id %>" class="list-group-item"><%= quizes[i].pregunta %></a>
+					<a href="quizes/<%= quizes[i].id %>" class="list-group-item">
+						<span class="glyphicon glyphicon-question-sign"></span>
+						<%= quizes[i].pregunta %>
+					</a>
+					<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info" role="button">Editar</a>
+					<a href="" class="btn btn-xs btn-warning" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+					<hr>
 				<% } %>
 			</ul>
+
 			<a href="/quizes/new" class="btn btn-primary" role="button">Crear pregunta</a>
 		</div>
 	</div>
