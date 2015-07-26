@@ -2,15 +2,13 @@
 	<div class="row">
 		<div class="col-md-6">
 
-			<div id="custom-search-input">
-                <div class="input-group col-md-12">
+			<div id="custom-search-input" class="clearfix">
+                <div class="col-md-12">
                 	<form action="/quizes" method="get" role="form">
                     <input type="text" name="search" class="form-control input-md" placeholder="Buscar pregunta" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-md" type="button">
+                        <button class="btn btn-info btn-md" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
-                    </span>
                     </form>
                 </div>
             </div>
@@ -22,9 +20,12 @@
 						<span class="glyphicon glyphicon-question-sign"></span>
 						<%= quizes[i].pregunta %>
 					</a>
-					<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info" role="button">Editar</a>
-					<a href="" class="btn btn-xs btn-warning" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-					<hr>
+					<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info but-editar" role="button">Editar</a>
+					<form method="post" class="but-borrar" action="quizes/<%= quizes[i].id %>?_method=delete">
+						<button class="btn btn-xs btn-warning" type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+					</form>
 				<% } %>
 			</ul>
 
