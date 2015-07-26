@@ -8,18 +8,19 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors: [] });
 });
 
-/* GET creditos. */
-router.get('/author', function(req, res) {
-  res.render('author', { title: 'Créditos' });
-});
-
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load);
 
+// router.get('/author', function(req, res) {
+//   res.render('author', { title: 'Créditos' });
+// });
+// Ruta autor
+router.get('/author',                      quizController.author);
 // Definición de rutas de /quizes
 router.get('/quizes',                      quizController.index);
 router.get('/quizes/:quizId(\\d+)',        quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+// Rutas CRUD
 router.get('/quizes/new',                  quizController.new);
 router.post('/quizes/create',              quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',   quizController.edit);
