@@ -1,23 +1,10 @@
 <div class="form-group">
 	<label for="">Pregunta:</label>
-	<input type="text" name="quiz[pregunta]" class="form-control" id="" placeholder="Insertar pregunta" value="<%= quiz.pregunta %>">
+	<input type="text" name="quiz[pregunta]" class="form-control" id="" placeholder="<%= quiz.pregunta %>" value="<%= quiz.pregunta %>">
 </div>
 <div class="form-group">
 	<label for="">Respuesta:</label>
-	<input type="text" name="quiz[respuesta]" class="form-control" id="" placeholder="Insertar respuesta" value="<%= quiz.respuesta %>">
-</div>
-<div class="form-group">
-	<label for="">Temática:</label>
-	<select class="form-control" name="quiz[tema]">
-		<%
-		var tema = ["Otro", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
-		for (var i = 0; i < tema.length; i++) {
-			var selectedOK = ((quiz.tema === tema[i]) ? "selected" : "");
-		%>
-
-			<option value="<%= tema[i] %>" <%= selectedOK %>><%= tema[i] %></option>
-		<% } %>
-	</select>
+	<input type="text" name="quiz[respuesta]" class="form-control" id="" placeholder="<%= quiz.respuesta %>" value="<%= quiz.respuesta %>">
 </div>
 
 <button type="submit" class="btn btn-primary">Guardar</button>
