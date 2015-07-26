@@ -18,7 +18,7 @@
 				<% var i; for (i=0; i < quizes.length; i++) { %>
 					<a href="quizes/<%= quizes[i].id %>" class="list-group-item">
 						<span class="glyphicon glyphicon-question-sign"></span>
-						<%= quizes[i].pregunta %>
+						<%= quizes[i].pregunta %> (<%= quizes[i].tema %>)
 					</a>
 					<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info but-editar" role="button">Editar</a>
 					<form method="post" class="but-borrar" action="quizes/<%= quizes[i].id %>?_method=delete">
