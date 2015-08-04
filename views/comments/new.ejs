@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<form action="/quizes/<%=quizid%>/comments/" method="post" role="form">
+					<legend>Añadir comentario: </legend>
+
+					<div class="form-group">
+						<input type="text" id="comment" name="comment[texto]" class="form-control" placeholder="Insertar comentario" value="">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Enviar</button>
+					<a href="/quizes" class="btn btn-link" role="button">Cancelar</a>
+			</form>
+		</div>
+	</div>
+</div>
