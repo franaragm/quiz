@@ -39,16 +39,12 @@
 					<li><a href="/author">Créditos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Link</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</li>
+					<% if(!session.user) {%>
+						<li><a href="/login">Login</a></li>
+					<%} else {%>
+						<li><a>Welcome <%= session.user.username %></a></li>
+						<li><a href="/logout">Logout</a></li>
+					<%}%>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
@@ -69,7 +65,10 @@
 		<%- body %>
 		<footer class="footer">
 			<div class="container">
-	        	<p class="text-muted">Quiz: el juego de las preguntas - <a href="http://es.wikipedia.org/wiki/Quiz">¿Qué es un Quiz?</a> - <a href="https://github.com/franaragm/quiz">Proyecto Github</a></p>
+	        	<p class="text-muted">
+	        		Quiz: el juego de las preguntas - <a href="http://es.wikipedia.org/wiki/Quiz">¿Qué es un Quiz?</a> - <a href="https://github.com/franaragm/quiz">Proyecto Github Fran Aragón</a>
+	        		- <a href="https://github.com/jquemada/quiz-2015">Proyecto Github Instructor</a>
+	        	</p>
 	    	</div>
 	    </footer>
 		<!-- jQuery -->

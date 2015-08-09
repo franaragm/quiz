@@ -1,9 +1,29 @@
 <div class="jumbotron">
-	<div class="container">
-		<h1>Bienvenido a <%= title %>!!</h1>
-		<p>Portal donde podrás crear tus juegos de preguntas y respuestas.</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="/quizes">Comience a Jugar</a>
-		</p>
-	</div>
+
+	<% if(!session.user) {%>
+		<div class="container">
+			<h1>Bienvenido a <%= title %>!!</h1>
+			<p>
+				Portal donde podrás crear tus juegos de preguntas y respuestas. Sólo lo usuarios
+				identificados podrán crear y gestionar preguntas preguntas.
+			</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/quizes">Jugar</a>
+				<a class="btn btn-primary btn-lg" href="/login">Acceder</a>
+			</p>
+		</div>
+	<%} else {%>
+		<div class="container">
+			<h1>Hola <%= session.user.username %> bienvenido a <%= title %>!!</h1>
+			<p>
+				Portal donde podrás crear tus juegos de preguntas y respuestas.
+			</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/quizes">Crear Preguntas</a>
+				<a class="btn btn-primary btn-lg" href="/logout">Cerrar Sesion</a>
+			</p>
+		</div>
+	<%}%>
+	
 </div>
+

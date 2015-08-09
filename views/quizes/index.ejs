@@ -20,16 +20,19 @@
 						<span class="glyphicon glyphicon-question-sign"></span>
 						<%= quizes[i].pregunta %> (<%= quizes[i].tema %>)
 					</a>
-					<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info but-editar" role="button">Editar</a>
-					<form method="post" class="but-borrar" action="quizes/<%= quizes[i].id %>?_method=delete">
-						<button class="btn btn-xs btn-warning" type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-					</form>
+					<% if(session.user) { %>
+						<a href="quizes/<%= quizes[i].id %>/edit" class="btn btn-xs btn-info but-editar" role="button">Editar</a>
+						<form method="post" class="but-borrar" action="quizes/<%= quizes[i].id %>?_method=delete">
+							<button class="btn btn-xs btn-warning" type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+	                            <span class="glyphicon glyphicon-trash"></span>
+	                        </button>
+						</form>
+					<% } %>
 				<% } %>
 			</ul>
-
+			<% if(session.user) { %>
 			<a href="/quizes/new" class="btn btn-primary" role="button">Crear pregunta</a>
+			<% } %>
 		</div>
 	</div>
 </div>
