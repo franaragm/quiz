@@ -15,7 +15,14 @@
 			<p>Comentarios:</p>
 			<ul class="list-group">
 				<% for(index in quiz.Comments) { %>
-					<li class="list-group-item"><%= quiz.Comments[index].texto %></li>
+					<% if(quiz.Comments[index].publicado || session.user) { %>
+						<li class="list-group-item"><%= quiz.Comments[index].texto %>
+						<% if(!quiz.Comments[index].publicado && session.user) { %>
+							<a href="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish" class="btn btn-xs btn-info but-publicar" role="button">Publicar</a>
+						<% } %>
+						</li>
+					<% } %>
+					
 				<% } %>
 			</ul>
 			<a class="btn btn-info" href="/quizes/<%= quiz.id %>/comments/new" role="button">Nuevo Comentario</a>

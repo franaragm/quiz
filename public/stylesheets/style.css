@@ -86,6 +86,13 @@ body {
   float: right;
 }
 
+.but-publicar {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  float: right;
+}
+
 .but-borrar {
   position: relative;
   top: -30px;
