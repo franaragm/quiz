@@ -12,13 +12,12 @@ var routes = require('./routes/index');
 
 var app = express();
 
-var TIME_LOGOUT = 120 * 1000;  //Dos minutos (120 segundos)
-
-// view engine setup
+// --- View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(partials());
+
+// --- Middlewares
 // uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -45,27 +44,27 @@ app.use(function(req, res, next) {
     next();
 });
 
-// Autologout 2 minutos
+// Midleware de inactividad de sesión (2 minutos)
 app.use(function(req, res, next){
     if(req.session.user){
         // Petición autenticada
         var now = new Date().getTime();
-        var lastInteraction = req.session.lastInteraction;
 
-        if (lastInteraction && (now - lastInteraction) > TIME_LOGOUT){            
+        if ((now - req.session.lastActivity) > (120 * 1000)){            
             // Sesión caducada
             delete req.session.user;
-            res.status(401);
-            res.render('error', { message: "La sesión ha caducado", error: {}, errors: [] });
+            delete req.session.lastActivity;
+            res.redirect('/login');
         }else{
-            req.session.lastInteraction = new Date().getTime();
-            res.locals.session = req.session;
+            req.session.lastActivity = now;
+            next();
         }
-    }    
-
-    next();
+    } else {
+        next();
+    }
 });
 
+// --- Enrutadores y resto de rutas
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -75,7 +74,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-// error handlers
+// --- Error handlers
 
 // development error handler
 // will print stacktrace
